@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSE News — Berita Dunia, Analisis Mendalam</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #0a0a0a;
+    --red-dark: #0a0a0a;
+    --red-light: #F0F2F7;
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-100: #F3F4F6;
+    --white: #ffffff;
+    --cream: #faf9f6;
+    --gold: #B8860B;
+    --TSE: #101F4C;
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-ui: 'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ===== TICKER ===== */
+  .ticker-bar {
+    background: var(--red);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 6px 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-label {
+    background: var(--red-dark);
+    padding: 4px 16px;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+  .ticker-track {
+    display: flex;
+    animation: tickerMove 40s linear infinite;
+    white-space: nowrap;
+    gap: 80px;
+  }
+  @keyframes tickerMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== TOP NAV ===== */
+  .top-nav {
+    background: white;
+    border-bottom: 1px solid var(--gray-300);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--gray-500);
+    letter-spacing: 0.04em;
+  }
+  .top-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-nav a { color: var(--gray-500); text-decoration: none; }
+  .top-nav a:hover { color: var(--red); }
+  .top-nav-links { display: flex; gap: 24px; }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: white;
+    border-bottom: 4px solid var(--red);
+    padding: 0;
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 24px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  .header-date {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--gray-500);
+    letter-spacing: 0.04em;
+  }
+  .logo-block {
+    text-align: center;
+  }
+  .logo-name {
+    font-family: var(--font-head);
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: block;
+  }
+  .logo-name span { color: var(--TSE); }
+  .logo-tagline {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+  .header-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .btn-subscribe {
+    background: var(--cream);
+    color: var(--black);
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-subscribe:hover { background: var(--red-dark); }
+  .btn-search {
+    background: none;
+    border: 1px solid var(--gray-300);
+    padding: 7px 14px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--gray-700);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.2s;
+  }
+  .btn-search:hover { border-color: var(--red); color: var(--red); }
+
+  /* ===== MAIN NAV ===== */
+  .main-nav {
+    background: var(--dark);
+  }
+  .main-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .nav-link {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: block;
+    border-bottom: 3px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: white;
+    border-bottom-color: var(--red);
+  }
+
+  /* ===== PAGE SYSTEM ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HOMEPAGE ===== */
+  .homepage { max-width: 1280px; margin: 0 auto; padding: 40px 24px; }
+
+  /* Hero */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1px;
+    background: var(--gray-300);
+    border: 1px solid var(--gray-300);
+    margin-bottom: 40px;
+  }
+  .hero-main {
+    background: white;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .hero-main:hover .hero-img { transform: scale(1.02); }
+  .hero-img-wrap { overflow: hidden; height: 380px; background: #1a1a2e; position: relative; }
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+    display: block;
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 40%, #8B0000 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-img-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    background: rgba(200,16,46,0.15);
+    border-radius: 50%;
+    top: -50px; right: -50px;
+  }
+  .hero-img-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+    bottom: -30px; left: 30px;
+  }
+  .hero-globe {
+    font-size: 100px;
+    opacity: 0.6;
+    filter: grayscale(0.3);
+    z-index: 1;
+  }
+  .hero-content { padding: 24px 28px; }
+  .hero-category {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-category::after { content: ''; flex: 1; height: 1px; background: var(--gray-300); }
+  .hero-headline {
+    font-family: var(--font-head);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--black);
+  }
+  .hero-dek {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .hero-meta {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--gray-500);
+    display: flex;
+    gap: 16px;
+  }
+
+  /* Sidebar stories */
+  .hero-sidebar { background: white; display: flex; flex-direction: column; }
+  .sidebar-story {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+    transition: background 0.15s;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sidebar-story:last-child { border-bottom: none; }
+  .sidebar-story:hover { background: var(--gray-100); }
+  .sidebar-num {
+    font-family: var(--font-head);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gray-300);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .sidebar-cat {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .sidebar-title {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .sidebar-dek {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-700);
+    border-left: 4px solid var(--red);
+    padding-left: 12px;
+    margin-bottom: 24px;
+  }
+
+  /* Article grid */
+  .articles-section { margin-bottom: 48px; }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gray-300);
+    border: 1px solid var(--gray-300);
+  }
+  .article-card {
+    background: white;
+    padding: 24px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .article-card:hover { background: #fdf9f9; }
+  .article-thumb {
+    height: 160px;
+    background: var(--gray-100);
+    margin: -24px -24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    overflow: hidden;
+    position: relative;
+  }
+  .thumb-1 { background: linear-gradient(135deg, #1a3a5c, #2d5986); }
+  .thumb-2 { background: linear-gradient(135deg, #1a3320, #2d6640); }
+  .thumb-3 { background: linear-gradient(135deg, #3a1a1a, #862d2d); }
+  .thumb-4 { background: linear-gradient(135deg, #3a2a1a, #8B6914); }
+  .thumb-5 { background: linear-gradient(135deg, #1a1a3a, #2d2d86); }
+  .thumb-icon { font-size: 48px; opacity: 0.5; }
+  .card-cat {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+  .card-dek {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .card-meta {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--gray-500);
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid var(--gray-100);
+    padding-top: 12px;
+  }
+  .read-more {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .read-more:hover { color: var(--red-dark); }
+  .read-more::after { content: ' →'; }
+
+  /* Opinion strip */
+  .opinion-strip {
+    background: var(--dark);
+    color: white;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+  .opinion-strip .section-label {
+    color: rgba(255,255,255,0.6);
+    border-left-color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .opinion-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .opinion-item { }
+  .opinion-quote {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+    margin-bottom: 12px;
+  }
+  .opinion-author {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+  .opinion-author strong { color: rgba(255,255,255,0.75); }
+
+  /* ===== ARTICLE PAGE ===== */
+  .article-page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+  }
+  .article-main { }
+  .article-back {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--red);
+    cursor: pointer;
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .article-back:hover { color: var(--red-dark); }
+  .article-category-label {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--red);
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+  .article-headline {
+    font-family: var(--font-head);
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--black);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .article-standfirst {
+    font-family: var(--font-body);
+    font-size: 19px;
+    color: var(--gray-700);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--red);
+    padding-left: 20px;
+  }
+  .article-byline {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--gray-500);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border-top: 1px solid var(--gray-300);
+    border-bottom: 1px solid var(--gray-300);
+    padding: 14px 0;
+    margin-bottom: 32px;
+  }
+  .byline-author { font-weight: 600; color: var(--gray-700); }
+  .article-hero-img {
+    width: 100%;
+    height: 360px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .article-body { }
+  .article-section-header {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 40px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-flag {
+    background: var(--red);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    flex-shrink: 0;
+  }
+  .article-subsection {
+    margin-bottom: 36px;
+  }
+  .article-subsection-title {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 14px;
+    padding-left: 16px;
+    border-left: 3px solid var(--gray-300);
+  }
+  .article-subsection-title.iran { border-left-color: #006600; }
+  .article-subsection-title.israel { border-left-color: #003399; }
+  .article-subsection-title.usa { border-left-color: #CC0000; }
+  .article-para {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+  .opinion-box {
+    background: #1a1a1a;
+    color: white;
+    padding: 28px 32px;
+    margin: 32px 0;
+    position: relative;
+  }
+  .opinion-box::before {
+    content: 'OPINI REDAKSI';
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+  }
+  .opinion-box p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.88);
+    font-style: italic;
+  }
+  .opinion-box p + p { margin-top: 14px; }
+
+  /* Article sidebar */
+  .article-sidebar { }
+  .sidebar-widget {
+    background: white;
+    border: 1px solid var(--gray-300);
+    margin-bottom: 24px;
+  }
+  .widget-header {
+    background: var(--dark);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+  }
+  .widget-body { padding: 16px; }
+  .related-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+  }
+  .related-item:last-child { border-bottom: none; }
+  .related-item:hover .related-title { color: var(--red); }
+  .related-num {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--gray-300);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .related-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--black);
+    transition: color 0.15s;
+  }
+  .key-facts { }
+  .fact-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-100);
+    font-family: var(--font-ui);
+    font-size: 13px;
+  }
+  .fact-item:last-child { border-bottom: none; }
+  .fact-icon { font-size: 16px; flex-shrink: 0; }
+  .fact-text { color: var(--gray-700); line-height: 1.5; }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-page { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+  .about-hero {
+    text-align: center;
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--gray-300);
+    padding-bottom: 48px;
+  }
+  .about-logo-big {
+    font-family: var(--font-head);
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .about-logo-big span { color: var(--red); }
+  .about-tagline {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 32px;
+  }
+  .about-mission {
+    font-family: var(--font-body);
+    font-size: 22px;
+    line-height: 1.7;
+    color: var(--gray-700);
+    font-style: italic;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .about-section { margin-bottom: 48px; }
+  .about-h2 {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+  }
+  .about-p {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--gray-700);
+    margin-bottom: 16px;
+  }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
+  .team-card {
+    background: white;
+    border: 1px solid var(--gray-300);
+    padding: 24px;
+    text-align: center;
+  }
+  .team-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--red);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+  }
+  .team-name { font-family: var(--font-head); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .team-role { font-family: var(--font-ui); font-size: 12px; color: var(--red); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .team-bio { font-family: var(--font-ui); font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+  /* ===== CONTACT PAGE ===== */
+  .contact-page { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-h1 { font-family: var(--font-head); font-size: 42px; font-weight: 900; color: var(--black); margin-bottom: 8px; }
+  .contact-sub { font-family: var(--font-ui); font-size: 14px; color: var(--gray-500); margin-bottom: 32px; }
+  .form-group { margin-bottom: 20px; }
+  .form-label { font-family: var(--font-ui); font-size: 12px; font-weight: 600; color: var(--gray-700); letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 8px; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    border: 1px solid var(--gray-300);
+    padding: 12px 16px;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--dark);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--red); }
+  .form-textarea { height: 140px; resize: vertical; }
+  .btn-send {
+    background: var(--red);
+    color: white;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .btn-send:hover { background: var(--red-dark); }
+  .contact-info { }
+  .contact-info-block { margin-bottom: 32px; }
+  .contact-info-h {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 8px;
+  }
+  .contact-info-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--gray-700);
+    align-items: flex-start;
+  }
+  .contact-icon { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .form-success {
+    background: #f0faf4;
+    border: 1px solid #86efac;
+    color: #15803d;
+    padding: 16px;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    display: none;
+    margin-top: 16px;
+  }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.6);
+    padding: 48px 0 24px;
+    margin-top: 64px;
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand-name {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .footer-brand-name span { color: var(--goldf); }
+  .footer-brand-desc { font-family: var(--font-ui); font-size: 13px; line-height: 1.7; }
+  .footer-col-title {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-family: var(--font-ui);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+    cursor: pointer;
+  }
+  .footer-links a:hover { color: white; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-ui);
+    font-size: 12px;
+  }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-legal a:hover { color: rgba(255,255,255,0.8); }
+
+  /* ===== DIVIDER ===== */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--gray-300);
+    margin: 40px 0;
+  }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    font-family: var(--font-ui);
+    font-size: 12px;
+    color: var(--gray-500);
+    border-bottom: 1px solid var(--gray-100);
+    background: white;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .breadcrumb span { cursor: pointer; }
+  .breadcrumb span:hover { color: var(--red); }
+  .breadcrumb .sep { color: var(--gray-300); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr 1fr; }
+    .article-page { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .article-headline { font-size: 28px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .opinion-grid { grid-template-columns: 1fr; }
+    .header-inner { grid-template-columns: 1fr; justify-items: center; gap: 12px; }
+  }
+  @media (max-width: 600px) {
+    .articles-grid { grid-template-columns: 1fr; }
+    .logo-name { font-size: 38px; }
+    .hero-headline { font-size: 22px; }
+    .footer-top { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">TERKINI</div>
+  <div style="overflow:hidden;flex:1;">
+    <div class="ticker-track">
+      <span>Ideologi Negara: Iran, Israel, dan Amerika Serikat</span>
+      <span>•</span>
+      <span>Sistem Pemerintahan: Dari Teokrasi Iran hingga Demokrasi Federal Amerika</span>
+      <span>•</span>
+      <span>Politik Dalam dan Luar Negeri: Kebijakan Baru Trump dan Dinamika AS–Iran</span>
+      <span>•</span>
+      <span>Pusaran Minyak dan Geopolitik: Menelusuri Akar Hubungan Iran, Barat, dan Israel</span>
+      <span>•</span>
+      <span>Ambisi Nuklir Iran: Dari Bantuan Amerika hingga Ketegangan Global</span>
+      <span>•</span>
+      <span>Velayat-e Faqih: Doktrin Keagamaan yang Menjadi Fondasi Republik Islam Iran</span>
+      <span>•</span>
+      <span>Zionisme Revisionis dan Kebijakan Ekspansi Wilayah Israel</span>
+      <span>•</span>
+      <span>JCPOA 2015: Kesepakatan Nuklir yang Lahir dan Runtuh</span>
+      <span>•</span>
+      <span>Operasi Ajax 1953: Kudeta CIA yang Mengubah Sejarah Iran</span>
+      <span>•</span>
+      <span>Polarisasi Dua Partai dan Ancaman terhadap Demokrasi Amerika</span>
+      <span>•</span>
+      <span>Ideologi Negara: Iran, Israel, dan Amerika Serikat</span>
+      <span>•</span>
+      <span>Sistem Pemerintahan: Dari Teokrasi Iran hingga Demokrasi Federal Amerika</span>
+      <span>•</span>
+      <span>Politik Dalam dan Luar Negeri: Kebijakan Baru Trump dan Dinamika AS–Iran</span>
+      <span>•</span>
+      <span>Pusaran Minyak dan Geopolitik: Menelusuri Akar Hubungan Iran, Barat, dan Israel</span>
+      <span>•</span>
+      <span>Ambisi Nuklir Iran: Dari Bantuan Amerika hingga Ketegangan Global</span>
+      <span>•</span>
+      <span>Velayat-e Faqih: Doktrin Keagamaan yang Menjadi Fondasi Republik Islam Iran</span>
+      <span>•</span>
+      <span>Zionisme Revisionis dan Kebijakan Ekspansi Wilayah Israel</span>
+      <span>•</span>
+      <span>JCPOA 2015: Kesepakatan Nuklir yang Lahir dan Runtuh</span>
+      <span>•</span>
+      <span>Operasi Ajax 1953: Kudeta CIA yang Mengubah Sejarah Iran</span>
+      <span>•</span>
+      <span>Polarisasi Dua Partai dan Ancaman terhadap Demokrasi Amerika</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+  <div class="top-nav-inner">
+    <span>Senin, 13 April 2026 | Jakarta, Indonesia</span>
+    <div class="top-nav-links">
+      <a href="#" onclick="showPage('home')">Beranda</a>
+      <a href="#" onclick="showPage('about')">Tentang Kami</a>
+      <a href="#" onclick="showPage('kerjasama')">Kerja Sama</a>
+      <a href="#" onclick="showPage('berlangganan')">Berlangganan</a>
+      <a href="#" onclick="showPage('contact')">Kontak</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-date">
+      <div style="font-weight:600;color:var(--dark);font-size:13px;">Senin, 13 April 2026</div>
+      <div>Edisi Digital &mdash; Jakarta</div>
+    </div>
+    <div class="logo-block" onclick="showPage('home')" style="cursor:pointer;">
+      <span class="logo-name"><span>TSE</span> News</span>
+      <span class="logo-tagline">Analisis Mendalam &bull; Perspektif Global</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-search" onclick="alert('Fungsi pencarian akan segera tersedia.')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Cari
+      </button>
+      <a class="btn-subscribe" href="#" onclick="showPage('berlangganan');return false;">Berlangganan</a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN NAV -->
+<nav class="main-nav">
+  <div class="main-nav-inner">
+    <a class="nav-link active" onclick="showPage('home');setActive(this)">Beranda</a>
+    <a class="nav-link" onclick="showPage('about');setActive(this)">Tentang Kami</a>
+    <a class="nav-link" onclick="showPage('kerjasama');setActive(this)">Kerja Sama</a>
+    <a class="nav-link" onclick="showPage('berlangganan');setActive(this)">Berlangganan</a>
+    <a class="nav-link" onclick="showPage('contact');setActive(this)">Kontak</a>
+  </div>
+</nav>
+
+<!-- ==================== HOMEPAGE ==================== -->
+<div id="page-home" class="page active">
+  <main class="homepage">
+
+    <!-- Hero Grid -->
+    <div class="hero-grid">
+      <div class="hero-main" onclick="showArticle('nuklir')">
+        <div class="hero-img-wrap">
+          <div class="hero-img-placeholder">
+            <span class="hero-globe">☢️</span>
+          </div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-category">Laporan Utama</div>
+          <div class="hero-headline">Ambisi Nuklir Iran: Dari Bantuan Amerika hingga Ketegangan Global</div>
+          <div class="hero-dek">Program nuklir Iran yang bermula dari kemitraan dengan AS kini menjadi inti konfrontasi strategis paling berbahaya di abad ke-21.</div>
+          <div class="hero-meta">
+            <span>Tim Redaksi TSE News</span>
+            <span>13 April 2026</span>
+            <span>Waktu baca: 12 menit</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="sidebar-story" onclick="showArticle('ideologi')">
+          <div class="sidebar-num">01</div>
+          <div class="sidebar-cat">Analisis</div>
+          <div class="sidebar-title">Ideologi Tiga Negara Kunci: Iran, Israel, dan Amerika Serikat</div>
+          <div class="sidebar-dek">Velayat-e Faqih, Zionisme Revisionis, hingga polarisasi dua partai.</div>
+        </div>
+        <div class="sidebar-story" onclick="showArticle('sistem')">
+          <div class="sidebar-num">02</div>
+          <div class="sidebar-cat">Politik</div>
+          <div class="sidebar-title">Sistem Pemerintahan: Teokrasi, Demokrasi, dan Ambisi Ekspansi</div>
+          <div class="sidebar-dek">Bagaimana struktur kekuasaan menentukan arah kebijakan di tiga negara berpengaruh.</div>
+        </div>
+        <div class="sidebar-story" onclick="showArticle('minyak')">
+          <div class="sidebar-num">03</div>
+          <div class="sidebar-cat">Geopolitik</div>
+          <div class="sidebar-title">Pusaran Minyak dan Geopolitik: Menelusuri Akar Konflik Timur Tengah</div>
+          <div class="sidebar-dek">Dari sumur minyak Masjed Soleyman hingga krisis nuklir hari ini.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Articles Section -->
+    <div class="articles-section">
+      <div class="section-label">Artikel Pilihan</div>
+      <div class="articles-grid">
+        <div class="article-card" onclick="showArticle('ideologi')">
+          <div class="article-thumb thumb-1"><span class="thumb-icon">🌍</span></div>
+          <div class="card-cat">Ideologi &amp; Politik</div>
+          <div class="card-title">Ideologi Negara: Iran, Israel, dan Amerika Serikat</div>
+          <div class="card-dek">Bagaimana doktrin keagamaan, militerisme, dan polarisasi partai membentuk identitas tiga negara yang paling berpengaruh di panggung dunia.</div>
+          <div class="card-meta">
+            <span>Tim Redaksi</span>
+            <span>12 Apr 2026</span>
+          </div>
+          <div class="read-more">Baca Selengkapnya</div>
+        </div>
+        <div class="article-card" onclick="showArticle('sistem')">
+          <div class="article-thumb thumb-2"><span class="thumb-icon">🏛️</span></div>
+          <div class="card-cat">Pemerintahan</div>
+          <div class="card-title">Sistem Pemerintahan: Dari Teokrasi ke Demokrasi Federal</div>
+          <div class="card-dek">Perbandingan mendalam sistem pemerintahan Iran yang teokratis, Israel yang dipengaruhi Zionisme, dan Amerika dengan checks and balances-nya.</div>
+          <div class="card-meta">
+            <span>Tim Redaksi</span>
+            <span>12 Apr 2026</span>
+          </div>
+          <div class="read-more">Baca Selengkapnya</div>
+        </div>
+        <div class="article-card" onclick="showArticle('politik')">
+          <div class="article-thumb thumb-3"><span class="thumb-icon">🤝</span></div>
+          <div class="card-cat">Hubungan Internasional</div>
+          <div class="card-title">Politik Dalam dan Luar Negeri: Kebijakan Baru Trump terhadap Iran</div>
+          <div class="card-dek">Strategi "tekanan maksimum" Amerika, dinamika sanksi, dan jalan panjang menuju perjanjian nuklir di tengah perubahan peta politik global.</div>
+          <div class="card-meta">
+            <span>Tim Redaksi</span>
+            <span>12 Apr 2026</span>
+          </div>
+          <div class="read-more">Baca Selengkapnya</div>
+        </div>
+        <div class="article-card" onclick="showArticle('minyak')">
+          <div class="article-thumb thumb-4"><span class="thumb-icon">🛢️</span></div>
+          <div class="card-cat">Geopolitik</div>
+          <div class="card-title">Pusaran Minyak dan Geopolitik Timur Tengah</div>
+          <div class="card-dek">Dari penemuan minyak 1908 hingga kudeta 1953 dan Revolusi Islam 1979: perjalanan panjang sumber daya alam yang mengubah wajah geopolitik dunia.</div>
+          <div class="card-meta">
+            <span>Tim Redaksi</span>
+            <span>11 Apr 2026</span>
+          </div>
+          <div class="read-more">Baca Selengkapnya</div>
+        </div>
+        <div class="article-card" onclick="showArticle('nuklir')">
+          <div class="article-thumb thumb-5"><span class="thumb-icon">⚛️</span></div>
+          <div class="card-cat">Keamanan Global</div>
+          <div class="card-title">Ambisi Nuklir Iran: Sejarah, Sanksi, dan Ketegangan yang Tak Kunjung Usai</div>
+          <div class="card-dek">Program nuklir Iran yang lahir dari kemitraan Barat kini menjadi inti konfrontasi strategis paling berbahaya di era modern.</div>
+          <div class="card-meta">
+            <span>Tim Redaksi</span>
+            <span>13 Apr 2026</span>
+          </div>
+          <div class="read-more">Baca Selengkapnya</div>
+        </div>
+        <div class="article-card" style="background:var(--dark);cursor:default;">
+          <div style="height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center;min-height:280px;">
+            <div style="font-family:var(--font-head);font-size:28px;font-weight:900;color:white;margin-bottom:12px;">TSE News</div>
+            <div style="font-family:var(--font-ui);font-size:12px;letter-spacing:0.2em;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-bottom:24px;">Analisis Mendalam</div>
+            <div style="font-family:var(--font-body);font-size:15px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:24px;">Dapatkan laporan eksklusif dan analisis mendalam langsung ke inbox Anda.</div>
+            <a class="btn-subscribe" onclick="showPage('contact')" style="font-size:12px;">Berlangganan →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opinion Strip -->
+    <div class="opinion-strip">
+      <div class="section-label">Opini Redaksi</div>
+      <div class="opinion-grid">
+        <div class="opinion-item">
+          <div class="opinion-quote">"Sistem Velayat-e Faqih adalah contoh nyata bagaimana ideologi dapat digunakan sebagai instrumen revolusi yang kuat — namun keefektifannya bergantung pada kemampuannya mengakomodasi aspirasi rakyat yang semakin modern."</div>
+          <div class="opinion-author">tentang <strong>Ideologi Iran</strong></div>
+        </div>
+        <div class="opinion-item">
+          <div class="opinion-quote">"Meskipun strategi pre-emptive Israel efektif melemahkan lawan dalam jangka pendek, ideologi yang terlalu mengandalkan kekuatan militer akan berdampak pada keberlangsungan dalam menciptakan perdamaian."</div>
+          <div class="opinion-author">tentang <strong>Strategi Israel</strong></div>
+        </div>
+        <div class="opinion-item">
+          <div class="opinion-quote">"Demokrasi Amerika Serikat saat ini terancam oleh pembelahan ideologi yang tajam. Polarisasi ini menghambat pencapaian tujuan jangka panjang karena arah kebijakan selalu berubah drastis setiap pergantian kekuasaan."</div>
+          <div class="opinion-author">tentang <strong>Polarisasi Amerika</strong></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ==================== ARTICLE: IDEOLOGI ==================== -->
+<div id="page-article-ideologi" class="page">
+  <div class="breadcrumb">
+    <span onclick="showPage('home')">Beranda</span>
+    <span class="sep">›</span>
+    <span onclick="showPage('home')">Analisis</span>
+    <span class="sep">›</span>
+    <span style="color:var(--dark);">Ideologi Negara</span>
+  </div>
+  <div class="article-page">
+    <article class="article-main">
+      <a class="article-back" onclick="showPage('home')">← Kembali</a>
+      <div class="article-category-label">Ideologi &amp; Politik</div>
+      <h1 class="article-headline">Ideologi Negara: Fondasi Kekuasaan di Iran, Israel, dan Amerika Serikat</h1>
+      <div class="article-standfirst">Dari doktrin Velayat-e Faqih yang menempatkan ulama sebagai pemegang kekuasaan tertinggi, militerisme Israel yang bersandar pada intelijen dan teknologi, hingga dualisme ideologis Amerika yang semakin membelah masyarakatnya — ideologi adalah mesin penggerak tiga negara paling berpengaruh di dunia saat ini.</div>
+      <div class="article-byline">
+        <span class="byline-author">Tim Redaksi TSE News</span>
+        <span>Senin, 13 April 2026</span>
+        <span>Waktu baca: 15 menit</span>
+      </div>
+      <div class="article-hero-img thumb-1"><span style="font-size:80px;opacity:0.5;">🌍</span></div>
+      <div class="article-body">
+
+        <!-- IRAN -->
+        <div class="article-section-header">
+          <span class="section-flag">A</span>
+          Ideologi Iran: Velayat-e Faqih
+        </div>
+        <div class="article-subsection">
+          <p class="article-para">Ideologi Iran didasarkan pada konsep <strong>Velayat-e Faqih</strong>, yaitu gagasan dalam ajaran Syiah Dua Belas Imam bahwa seorang ulama ahli hukum Islam (faqih) berhak memimpin masyarakat selama ketiadaan imam yang diyakini sebagai pemimpin spiritual.</p>
+          <p class="article-para">Konsep ini berkembang sejak era Dinasti Safawi dan semakin kuat setelah ketegangan antara ulama dan penguasa pada masa berikutnya, hingga akhirnya diformalkan oleh Ruhollah Khomeini pada 1970. Ia menegaskan bahwa pemerintahan yang adil harus berada di bawah pengawasan ulama, bukan sekadar bekerja sama dengan penguasa.</p>
+          <p class="article-para">Setelah Revolusi Iran 1979, konsep ini menjadi dasar berdirinya Republik Islam Iran, dengan posisi Supreme Leader sebagai pemegang kekuasaan tertinggi yang mengawasi seluruh pemerintahan. Dalam praktiknya, ideologi ini didukung oleh lembaga-lembaga keagamaan seperti Assembly of Experts yang memilih pemimpin tertinggi, Guardian Council yang mengawasi hukum dan pemilu, serta peran militer seperti IRGC yang menjaga sistem tersebut.</p>
+        </div>
+        <div class="opinion-box">
+          <p>Transformasi konsep Velāyat-e Faqīh dari masa Safawiyah hingga era Khomeini menunjukkan bagaimana sebuah doktrin keagamaan dapat beradaptasi secara radikal akibat tekanan politik dan sosial. Meskipun Khomeini menawarkan sistem ini sebagai solusi atas ketidakadilan rezim Shah, sistem ini menciptakan paradigma baru di mana otoritas agama dan politik menjadi tidak terpisahkan.</p>
+          <p>Velāyat-e Faqīh adalah contoh nyata bagaimana ideologi dapat digunakan sebagai instrumen revolusi yang kuat. Namun, keefektifannya sebagai sistem pemerintahan jangka panjang bergantung pada apakah sistem tersebut mampu mengakomodasi aspirasi rakyat yang semakin modern atau tetap pada penafsiran otoritas agama abad ke-20. Meskipun konsep "Raja Filsuf" terdengar ideal secara teori, dalam praktiknya manusia tetap memiliki keterbatasan — memusatkan kekuasaan pada satu orang berdasarkan status keagamaan bisa menutup ruang bagi pluralisme atau perbedaan pendapat.</p>
+        </div>
+
+        <!-- ISRAEL -->
+        <div class="article-section-header">
+          <span class="section-flag">B</span>
+          Ideologi Israel: Militerisme dan Pre-emptive Strategy
+        </div>
+        <div class="article-subsection">
+          <p class="article-para">Ideologi Israel tercermin pada fokus kuat terhadap keamanan dan pencegahan ancaman melalui tindakan militer langsung. Negara memandang ancaman, khususnya dari Iran, sebagai alasan utama dalam menentukan kebijakan strategis.</p>
+          <p class="article-para">Pemerintahan di bawah Benjamin Netanyahu menjalankan pendekatan <em>pre-emptive</em>, yaitu menyerang lebih dulu untuk melemahkan kemampuan lawan sebelum ancaman berkembang. Strategi ini dilakukan melalui operasi militer terencana yang melibatkan intelijen, agen rahasia, serta penggunaan teknologi persenjataan canggih untuk menargetkan fasilitas penting dan individu kunci.</p>
+          <p class="article-para">Selain itu, kerja sama erat dengan Amerika Serikat memperkuat pelaksanaan kebijakan ini, baik dalam bentuk dukungan militer maupun koordinasi strategi. Diplomasi tetap digunakan, tetapi berfungsi sebagai alat taktis untuk mendukung operasi militer dan menjaga posisi internasional.</p>
+        </div>
+        <div class="opinion-box">
+          <p>Ideologi ini menempatkan militerisme sebagai fondasi utama dalam pengambilan keputusan politik negara. Penggunaan pendekatan pre-emptive menunjukkan adanya tingkat ketidakpercayaan yang tinggi terhadap diplomasi internasional atau perjanjian damai — ancaman yang bersifat eksistensial akan diselesaikan dengan cara ofensif agar mendapatkan keunggulan posisi dalam suatu konflik.</p>
+          <p>Dalam praktiknya, banyak operasi rahasia dilakukan untuk melumpuhkan program nuklir lawan atau serangan udara terukur. Hal ini membuktikan bahwa strategi mereka sangat bergantung pada "penguasaan informasi" dan kerja sama strategis dengan Amerika Serikat sebagai penopang kekuatan. Meskipun strategi ini efektif melemahkan lawan dalam jangka pendek, ideologi yang terlalu mengandalkan kekuatan militer akan berdampak pada keberlangsungan dalam menciptakan perdamaian.</p>
+        </div>
+
+        <!-- USA -->
+        <div class="article-section-header">
+          <span class="section-flag">C</span>
+          Ideologi Amerika Serikat: E Pluribus Unum dan Polarisasi Dua Partai
+        </div>
+        <div class="article-subsection">
+          <p class="article-para">Ideologi Amerika Serikat berawal dari gagasan untuk menyatukan berbagai pandangan dalam satu negara tanpa dominasi kelompok tertentu, sebagaimana tercermin dalam prinsip <em>E Pluribus Unum</em>. Para pemikir seperti Alexander Hamilton dan James Madison menekankan pentingnya keseimbangan antara kekuasaan dan oposisi agar kebebasan individu tetap terjaga.</p>
+          <p class="article-para">Dalam perkembangannya, ideologi di Amerika Serikat terbagi menjadi dua arus utama: konservatif yang diwakili Partai Republik — menekankan kekuatan ekonomi, pembatasan imigrasi, serta kebijakan luar negeri yang tegas — dan progresif yang diwakili Partai Demokrat, yang lebih menekankan keterbukaan terhadap perubahan, keberagaman, perlindungan sosial, dan isu lingkungan.</p>
+          <p class="article-para">Akibat sistem politik yang berkembang, ideologi Amerika Serikat kini identik dengan persaingan dua kubu tersebut. Polarisasi ini membuat masyarakat cenderung terbagi dalam dua pandangan besar yang berbeda, sehingga arah kebijakan negara sangat ditentukan oleh ideologi partai yang sedang berkuasa.</p>
+        </div>
+        <div class="opinion-box">
+          <p>Demokrasi Amerika Serikat saat ini terancam oleh pembelahan ideologi yang tajam. Polarisasi ini menghambat pencapaian tujuan jangka panjang negara karena arah kebijakan selalu berubah drastis setiap kali terjadi pergantian kekuasaan. Sistem dua partai cenderung memaksa masyarakat pada pilihan yang ekstrem — benturan prioritas yang kontras di mana Partai Republik berfokus pada ekonomi dan imigrasi, sementara Partai Demokrat mengutamakan perlindungan sosial dan lingkungan.</p>
+          <p>Meskipun demokrasi membutuhkan oposisi, kebencian antar kubu yang berlebihan justru merusak sistem. Jika polarisasi terus menguat, hal ini pada akhirnya akan mengancam kebebasan individu yang seharusnya dilindungi oleh demokrasi itu sendiri.</p>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">Artikel Terkait</div>
+        <div class="widget-body">
+          <div class="related-item" onclick="showArticle('sistem')">
+            <div class="related-num">02</div>
+            <div class="related-title">Sistem Pemerintahan: Teokrasi, Demokrasi, dan Ambisi Ekspansi</div>
+          </div>
+          <div class="related-item" onclick="showArticle('politik')">
+            <div class="related-num">03</div>
+            <div class="related-title">Politik Dalam dan Luar Negeri</div>
+          </div>
+          <div class="related-item" onclick="showArticle('minyak')">
+            <div class="related-num">04</div>
+            <div class="related-title">Pusaran Minyak dan Geopolitik</div>
+          </div>
+          <div class="related-item" onclick="showArticle('nuklir')">
+            <div class="related-num">05</div>
+            <div class="related-title">Ambisi Nuklir Iran</div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header">Fakta Kunci</div>
+        <div class="widget-body key-facts">
+          <div class="fact-item"><span class="fact-icon">📅</span><span class="fact-text">Velayat-e Faqih diformalkan Khomeini pada <strong>1970</strong></span></div>
+          <div class="fact-item"><span class="fact-icon">🗓️</span><span class="fact-text">Revolusi Islam Iran terjadi pada <strong>1979</strong></span></div>
+          <div class="fact-item"><span class="fact-icon">🇺🇸</span><span class="fact-text">Prinsip E Pluribus Unum — kesatuan dari keberagaman</span></div>
+          <div class="fact-item"><span class="fact-icon">🏛️</span><span class="fact-text">Zionisme Revisionis dikembangkan Ze'ev Jabotinsky</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ==================== ARTICLE: SISTEM PEMERINTAHAN ==================== -->
+<div id="page-article-sistem" class="page">
+  <div class="breadcrumb">
+    <span onclick="showPage('home')">Beranda</span>
+    <span class="sep">›</span>
+    <span onclick="showPage('home')">Politik</span>
+    <span class="sep">›</span>
+    <span style="color:var(--dark);">Sistem Pemerintahan</span>
+  </div>
+  <div class="article-page">
+    <article class="article-main">
+      <a class="article-back" onclick="showPage('home')">← Kembali</a>
+      <div class="article-category-label">Pemerintahan &amp; Politik</div>
+      <h1 class="article-headline">Sistem Pemerintahan: Dari Teokrasi Iran hingga Demokrasi Federal Amerika</h1>
+      <div class="article-standfirst">Tiga negara, tiga sistem yang berbeda secara fundamental: Iran dengan teokrasi yang menempatkan ulama di puncak kekuasaan, Israel dengan pengaruh kuat Zionisme dalam setiap kebijakan, dan Amerika dengan arsitektur konstitusional yang dirancang untuk mencegah tirani.</div>
+      <div class="article-byline">
+        <span class="byline-author">Tim Redaksi TSE News</span>
+        <span>Senin, 13 April 2026</span>
+        <span>Waktu baca: 14 menit</span>
+      </div>
+      <div class="article-hero-img thumb-2"><span style="font-size:80px;opacity:0.5;">🏛️</span></div>
+      <div class="article-body">
+
+        <div class="article-section-header"><span class="section-flag">A</span>Sistem Pemerintahan Iran</div>
+        <p class="article-para">Sistem pemerintahan Iran berbentuk <strong>republik teokratis</strong> yang menggabungkan unsur demokrasi dan kekuasaan agama melalui konsep Velayat-e Faqih. Dalam struktur ini, kekuasaan tertinggi berada di tangan Supreme Leader, yang berperan sebagai pemimpin politik dan keagamaan sekaligus, seperti yang pernah dijabat oleh Ali Khamenei.</p>
+        <p class="article-para">Supreme Leader tidak dipilih langsung oleh rakyat, melainkan oleh Assembly of Experts, dan memiliki kewenangan luas seperti mengendalikan militer, menentukan arah kebijakan negara, serta mengangkat pejabat penting dan menyetujui atau memberhentikan presiden. Di bawahnya, presiden dipilih melalui pemilu dan bertugas menjalankan pemerintahan sehari-hari, namun tetap berada di bawah kendali Supreme Leader.</p>
+        <p class="article-para">Selain itu, terdapat lembaga seperti Majlis yang membuat undang-undang dan Guardian Council yang mengawasi kesesuaian hukum dengan syariat serta menyaring kandidat pemilu. Struktur ini menunjukkan bahwa meskipun terdapat elemen demokrasi, sistem pemerintahan Iran tetap menempatkan otoritas agama sebagai kekuasaan tertinggi dalam negara.</p>
+        <div class="opinion-box">
+          <p>Sistem pemerintahan Iran merupakan bentuk eksperimen politik yang unik namun lekat dengan ketegangan antara kedaulatan rakyat dan kedaulatan agama. Secara logis, jika kandidat yang boleh dipilih oleh rakyat harus disetujui terlebih dahulu oleh lembaga agama, maka pilihan rakyat secara tidak langsung menjadi terbatas pada tokoh-tokoh yang hanya sejalan dengan visi penguasa agama — menciptakan sebuah sistem di mana demokrasi berfungsi sebagai prosedur, namun kekuasaan tetap terpusat.</p>
+          <p>Kesimpulannya, sistem republik teokratis ini menunjukkan bahwa identitas agama negara Iran ditempatkan di atas segalanya. Hal ini menjamin konsistensi ideologi negara, namun di sisi lain, memiliki tantangan dalam menyeimbangkan aspirasi rakyat dengan doktrin agama.</p>
+        </div>
+
+        <div class="article-section-header"><span class="section-flag">B</span>Sistem Pemerintahan Israel</div>
+        <p class="article-para">Sistem pemerintahan Israel dipengaruhi oleh ideologi <strong>Zionisme</strong>, yaitu gerakan politik dan budaya Yahudi yang bertujuan mendirikan negara di wilayah Palestina. Ide ini muncul sebagai respons terhadap diskriminasi yang dialami bangsa Yahudi di Eropa dan dipelopori oleh Theodor Herzl.</p>
+        <p class="article-para">Secara historis, berdirinya Israel tidak lepas dari dukungan Inggris melalui Deklarasi Balfour yang menjanjikan pembentukan tanah air bagi Yahudi di Palestina. Namun, janji untuk melindungi hak masyarakat non-Yahudi tidak berjalan, sehingga memicu konflik dengan bangsa Arab dan Palestina yang terus berlangsung hingga kini.</p>
+        <p class="article-para">Dalam perkembangannya, arah kebijakan negara semakin dipengaruhi oleh aliran Zionisme Revisionis yang menekankan penguasaan wilayah dengan kekuatan militer — dikembangkan oleh Ze'ev Jabotinsky dan kemudian memengaruhi kebijakan politik modern, termasuk di bawah kepemimpinan Benjamin Netanyahu.</p>
+        <div class="opinion-box">
+          <p>Sistem pemerintahan Israel terbentuk dari pergeseran ideologi dari Zionisme Klasik menjadi Zionisme Revisionis — dari pencarian perlindungan atas diskriminasi menuju penguasaan wilayah melalui kekuatan militer dan gagasan "Israel Raya". Kebijakan negara tidak hanya didasarkan pada keamanan nasional yang objektif, tetapi juga pada tafsir keagamaan dan sejarah mengenai wilayah.</p>
+          <p>Hal ini terlihat dari kebijakan aneksasi yang terus berlanjut. Dengan demikian, ideologi dalam Israel adalah penggerak utama kebijakan negaranya — selama arah politik masih dipengaruhi oleh ambisi ekspansi wilayah berdasarkan tafsir keagamaan, maka stabilitas di Timur Tengah akan tetap memicu konflik dan diwarnai oleh benturan kepentingan yang tajam.</p>
+        </div>
+
+        <div class="article-section-header"><span class="section-flag">C</span>Sistem Pemerintahan Amerika Serikat</div>
+        <p class="article-para">Sistem pemerintahan Amerika Serikat berbentuk <strong>republik konstitusional federal</strong> dan demokrasi perwakilan yang berlandaskan prinsip checks and balances. Kekuasaan negara dibagi ke dalam tiga cabang utama yang saling mengawasi: legislatif, eksekutif, dan yudikatif.</p>
+        <p class="article-para">Cabang legislatif dijalankan oleh Kongres yang terdiri dari Senat dan DPR — bertugas membuat undang-undang, mengesahkan anggaran, serta mengawasi kebijakan pemerintah. Cabang eksekutif dipimpin oleh Presiden sebagai kepala negara, kepala pemerintahan, sekaligus panglima tertinggi militer. Cabang yudikatif dijalankan oleh Mahkamah Agung yang bertugas menafsirkan hukum dan menilai konstitusionalitas undang-undang.</p>
+        <p class="article-para">Melalui sistem ini, ketiga cabang saling membatasi sehingga tidak ada kekuasaan yang dominan. Kekuasaan tertinggi tetap berada di tangan rakyat melalui pemilihan umum.</p>
+        <div class="opinion-box">
+          <p>Kekuatan utama sistem pemerintahan Amerika Serikat terletak pada desain strukturnya yang sangat menghargai pembagian kekuasaan. Sistem checks and balances ini merupakan mekanisme pertahanan untuk mencegah negara jatuh ke dalam otoriterisme atau kekuasaan mutlak satu orang — diciptakan atas rasa tidak percaya pada kekuasaan yang terpusat.</p>
+          <p>Dengan membagi tugas ke dalam tiga cabang, setiap cabang memiliki "senjata" untuk mengoreksi cabang lainnya. Secara logis, ini membuat proses pengambilan keputusan menjadi lebih lambat dan panjang, namun jauh lebih aman karena harus melalui banyak tahap persetujuan. Meskipun konsep ideologisnya sering memicu ketegangan, sistem checks and balances ini memastikan bahwa negara tetap stabil.</p>
+        </div>
+
+      </div>
+    </article>
+    <aside class="article-sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">Artikel Terkait</div>
+        <div class="widget-body">
+          <div class="related-item" onclick="showArticle('ideologi')"><div class="related-num">01</div><div class="related-title">Ideologi Negara: Iran, Israel, USA</div></div>
+          <div class="related-item" onclick="showArticle('politik')"><div class="related-num">03</div><div class="related-title">Politik Dalam dan Luar Negeri</div></div>
+          <div class="related-item" onclick="showArticle('minyak')"><div class="related-num">04</div><div class="related-title">Pusaran Minyak dan Geopolitik</div></div>
+          <div class="related-item" onclick="showArticle('nuklir')"><div class="related-num">05</div><div class="related-title">Ambisi Nuklir Iran</div></div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header">Fakta Kunci</div>
+        <div class="widget-body key-facts">
+          <div class="fact-item"><span class="fact-icon">👑</span><span class="fact-text">Supreme Leader Iran: Ali Khamenei, dipilih oleh Assembly of Experts</span></div>
+          <div class="fact-item"><span class="fact-icon">🇮🇱</span><span class="fact-text">Deklarasi Balfour 1917 menjadi fondasi berdirinya Israel</span></div>
+          <div class="fact-item"><span class="fact-icon">⚖️</span><span class="fact-text">Konstitusi AS dirancang 1787, berlaku 1789</span></div>
+          <div class="fact-item"><span class="fact-icon">🏛️</span><span class="fact-text">Kongres AS: Senat (100 anggota) + DPR (435 anggota)</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ==================== ARTICLE: POLITIK ==================== -->
+<div id="page-article-politik" class="page">
+  <div class="breadcrumb">
+    <span onclick="showPage('home')">Beranda</span>
+    <span class="sep">›</span>
+    <span onclick="showPage('home')">Hubungan Internasional</span>
+    <span class="sep">›</span>
+    <span style="color:var(--dark);">Politik Luar Negeri</span>
+  </div>
+  <div class="article-page">
+    <article class="article-main">
+      <a class="article-back" onclick="showPage('home')">← Kembali</a>
+      <div class="article-category-label">Hubungan Internasional</div>
+      <h1 class="article-headline">Politik Dalam dan Luar Negeri: Kebijakan Baru Trump dan Dinamika AS–Iran</h1>
+      <div class="article-standfirst">Dari strategi "tekanan maksimum" Trump terhadap Teheran, perjanjian nuklir JCPOA yang lahir dan runtuh, hingga peran Israel sebagai proksi militer — babak baru konfrontasi Amerika-Iran terus membentuk peta kekuasaan dunia.</div>
+      <div class="article-byline">
+        <span class="byline-author">Tim Redaksi TSE News</span>
+        <span>Senin, 13 April 2026</span>
+        <span>Waktu baca: 13 menit</span>
+      </div>
+      <div class="article-hero-img thumb-3"><span style="font-size:80px;opacity:0.5;">🤝</span></div>
+      <div class="article-body">
+
+        <div class="article-section-header"><span class="section-flag">A</span>Kebijakan Luar Negeri Baru Trump terhadap Iran</div>
+        <p class="article-para">Iran termasuk dalam daftar musuh internasional pemerintahan Trump, yang meliputi Korea Utara, Venezuela, Rusia, dan China. Menurut penulis Matthew Kroenig dan Dan Negrea, yang menerbitkan manifesto tahun 2024 untuk pemerintahan Trump kedua berjudul "We Win, They Lose: Republican Foreign Policy and the New Cold War," kebijakan luar negeri Trump akan fokus pada pembatasan kekuatan China.</p>
+        <p class="article-para">Untuk mewujudkan rencana itu, Trump akan berupaya menciptakan jarak antara China dan sekutunya. Jika invasi Rusia yang menyebabkan perang di Ukraina berakhir dan sanksi terhadap Rusia dicabut, hal itu dapat melemahkan aliansi Rusia dengan China dan mengurangi dukungannya terhadap Iran — akibatnya, rezim Iran akan menjadi lebih terisolasi.</p>
+        <p class="article-para">Pemerintahan Trump memandang Iran sebagai target karena negara itu merupakan salah satu musuh Amerika yang paling lemah. Trump juga akan terus memberlakukan sanksi terhadap aset-aset Iran untuk membatasi ekspor minyak Iran ke China dan Rusia. AS juga bisa menyerang Iran dengan membantu kelompok oposisi Iran yang ingin mengubah sistem pemerintahan Islam.</p>
+
+        <div class="article-section-header"><span class="section-flag">B</span>Hubungan AS–Iran dan Krisis Nuklir</div>
+        <p class="article-para">Hubungan antara AS dan Iran mencapai titik terendahnya ketika menjadi jelas bahwa Iran memiliki kemampuan senjata nuklir. Pada tahun 1990-an, ada kecurigaan tentang persenjataan nuklir Iran, tetapi pada awal tahun 2000-an, informasi muncul tentang pabrik pengayaan Natanz dan reaktor air berat Arak — dua fasilitas yang dapat menjadi bagian dari program persenjataan nuklir.</p>
+        <p class="article-para">Kekhawatiran akan program nuklir Iran dan taktik penundaan yang digunakan Iran menyebabkan AS dan Uni Eropa memberlakukan sanksi ekonomi yang melumpuhkan terhadap Iran. Perekonomian Iran pun mengalami tekanan ekonomi yang sangat berat.</p>
+        <p class="article-para">Pada tahun 2015, Presiden Barack Obama berhasil menengahi <strong>JCPOA (Joint Comprehensive Plan of Action)</strong>. Iran setuju mengurangi kapasitas pengayaan uraniumnya, membatasi persediaan uranium selama 15 tahun, dan mengizinkan inspeksi ketat IAEA — sebagai imbalan atas pencabutan sanksi ekonomi secara bertahap.</p>
+        <p class="article-para">Namun pada 2018, Presiden Trump secara sepihak menarik diri dari JCPOA dan menerapkan kembali kebijakan "tekanan maksimum", yang membawa hubungan AS-Iran kembali ke titik konfrontasi terbuka.</p>
+        <div class="opinion-box">
+          <p>Kebijakan luar negeri Amerika terhadap Iran mencerminkan dilema klasik antara diplomasi dan koersi. JCPOA membuktikan bahwa negosiasi multinasional dapat menghasilkan kesepakatan yang berarti — namun kerentanannya terhadap perubahan administrasi AS menunjukkan kelemahan mendasar: komitmen diplomasi Amerika tidak dapat dipercaya melampaui satu siklus pemilihan presiden.</p>
+          <p>Ini bukan hanya masalah Iran, tetapi menyangkut kredibilitas Amerika sebagai mitra perjanjian global. Ketika Washington menarik diri dari JCPOA, ia tidak hanya merusak kesepakatan nuklir — ia merusak kepercayaan puluhan negara yang mengandalkan komitmen AS dalam tata kelola global.</p>
+        </div>
+
+      </div>
+    </article>
+    <aside class="article-sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">Artikel Terkait</div>
+        <div class="widget-body">
+          <div class="related-item" onclick="showArticle('ideologi')"><div class="related-num">01</div><div class="related-title">Ideologi Negara: Iran, Israel, USA</div></div>
+          <div class="related-item" onclick="showArticle('sistem')"><div class="related-num">02</div><div class="related-title">Sistem Pemerintahan</div></div>
+          <div class="related-item" onclick="showArticle('nuklir')"><div class="related-num">05</div><div class="related-title">Ambisi Nuklir Iran</div></div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header">Kronologi</div>
+        <div class="widget-body key-facts">
+          <div class="fact-item"><span class="fact-icon">📅</span><span class="fact-text"><strong>2002</strong> — Fasilitas nuklir rahasia Natanz dan Arak terungkap</span></div>
+          <div class="fact-item"><span class="fact-icon">📅</span><span class="fact-text"><strong>2006</strong> — Sanksi internasional PBB terhadap Iran dimulai</span></div>
+          <div class="fact-item"><span class="fact-icon">📅</span><span class="fact-text"><strong>2015</strong> — JCPOA ditandatangani di bawah Obama</span></div>
+          <div class="fact-item"><span class="fact-icon">📅</span><span class="fact-text"><strong>2018</strong> — Trump mundur dari JCPOA secara sepihak</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ==================== ARTICLE: MINYAK ==================== -->
+<div id="page-article-minyak" class="page">
+  <div class="breadcrumb">
+    <span onclick="showPage('home')">Beranda</span>
+    <span class="sep">›</span>
+    <span onclick="showPage('home')">Geopolitik</span>
+    <span class="sep">›</span>
+    <span style="color:var(--dark);">Geopolitik Minyak</span>
+  </div>
+  <div class="article-page">
+    <article class="article-main">
+      <a class="article-back" onclick="showPage('home')">← Kembali</a>
+      <div class="article-category-label">Geopolitik</div>
+      <h1 class="article-headline">Pusaran Minyak dan Geopolitik: Menelusuri Akar Hubungan Iran, Barat, dan Israel</h1>
+      <div class="article-standfirst">Sebuah eksplorasi minyak tahun 1908 mengubah segalanya. Dari sumur pertama di Masjed Soleyman hingga kudeta yang didalangi CIA pada 1953, dan dari Revolusi Islam 1979 hingga konfrontasi militer hari ini — minyak bukan sekadar komoditas, ia adalah kunci yang membuka pintu konflik terpanjang dunia modern.</div>
+      <div class="article-byline">
+        <span class="byline-author">Tim Redaksi TSE News</span>
+        <span>Senin, 13 April 2026</span>
+        <span>Waktu baca: 11 menit</span>
+      </div>
+      <div class="article-hero-img thumb-4"><span style="font-size:80px;opacity:0.5;">🛢️</span></div>
+      <div class="article-body">
+
+        <div class="article-section-header"><span class="section-flag">I</span>Penemuan Minyak dan Dominasi Inggris</div>
+        <p class="article-para">Hubungan antara Iran dan Barat memiliki akar sejarah yang sangat dalam, bermula dari komoditas paling berharga di bawah tanah Persia: minyak bumi. Titik tolak yang paling signifikan terjadi pada 1908, ketika minyak ditemukan dalam jumlah besar di Masjed Soleyman oleh William Knox D'Arcy, pengusaha Inggris. Penemuan ini memicu berdirinya Anglo-Persian Oil Company (APOC) — cikal bakal raksasa energi dunia yang kini dikenal sebagai BP (British Petroleum).</p>
+        <p class="article-para">Sejak saat itu, Inggris memegang kendali hampir mutlak atas kekayaan sumber daya Iran melalui perjanjian konsesi yang sangat tidak seimbang. Iran hanya menerima royalti yang sangat kecil sementara Inggris meraup keuntungan besar untuk memperkuat armada lautnya.</p>
+
+        <div class="article-section-header"><span class="section-flag">II</span>Nasionalisasi Mossadegh dan Kudeta CIA</div>
+        <p class="article-para">Ketegangan memuncak pasca-Perang Dunia II ketika semangat nasionalisme Iran bangkit di bawah kepemimpinan Mohammad Mossadegh. Pada 1951, sebagai Perdana Menteri yang terpilih secara demokratis, Mossadegh melakukan langkah berani dengan menasionalisasi industri minyak Iran — secara efektif mengusir kontrol Inggris.</p>
+        <p class="article-para">Karena khawatir Iran akan jatuh ke dalam pengaruh Uni Soviet di tengah Perang Dingin, Amerika Serikat melalui CIA bekerja sama dengan intelijen Inggris melakukan <strong>Operasi Ajax pada 1953</strong>. Kudeta ini berhasil menggulingkan Mossadegh dan mengembalikan kekuasaan absolut kepada Shah Mohammad Reza Pahlavi. Sejak saat itulah Amerika Serikat menjadi mitra utama Iran, menggantikan dominasi Inggris.</p>
+
+        <div class="article-section-header"><span class="section-flag">III</span>Revolusi 1979 dan Berakhirnya Aliansi Iran-Israel</div>
+        <p class="article-para">Di bawah pemerintahan Shah, hubungan Iran dengan Israel justru sangat kontras dengan kondisi saat ini. Pada masa itu, Iran dan Israel adalah sekutu dekat yang bekerja sama dalam bidang militer, intelijen, dan ekonomi — keduanya memiliki kepentingan yang sama untuk membendung pengaruh nasionalisme Arab dan komunisme di Timur Tengah.</p>
+        <p class="article-para">Namun, semua berubah secara drastis setelah Revolusi Islam 1979. Rezim baru di bawah Ayatollah Khomeini mengubah arah kebijakan luar negeri Iran secara total, menjadikan anti-Zionisme dan anti-imperialisme sebagai landasan ideologi negara. Iran memutuskan semua hubungan diplomatik dengan Israel dan mulai mendukung kelompok-kelompok perlawanan yang memusuhi negara tersebut.</p>
+        <p class="article-para">Israel memandang bahwa Iran yang memiliki senjata nuklir, dikombinasikan dengan retorika permusuhan dan dukungan Iran terhadap kelompok proksi di perbatasan Israel, merupakan ancaman yang tidak bisa ditoleransi. Oleh karena itu, Israel sering kali melakukan operasi yang bertujuan menyabotase infrastruktur nuklir dan militer Iran — melalui serangan siber, pembunuhan ilmuwan tingkat tinggi, maupun serangan udara langsung terhadap fasilitas strategis.</p>
+        <div class="opinion-box">
+          <p>Kisah minyak Iran adalah cermin paling jujur dari bagaimana kepentingan ekonomi membentuk — dan merusak — tatanan geopolitik. Mossadegh bukan seorang komunis; ia adalah nasionalis demokratis yang ingin kedaulatannya dihormati. Namun kepentingan minyak Barat menganggap demokrasi yang memberdayakan rakyatnya sendiri sebagai ancaman yang lebih besar daripada komunisme.</p>
+          <p>Kudeta 1953 mungkin menyelamatkan minyak Barat selama beberapa dekade, namun ia menanam benih kebencian yang berbuah dalam Revolusi 1979 — dan seluruh ketidakstabilan Timur Tengah yang kita warisi hingga hari ini. Sejarah ini seharusnya mengajarkan bahwa stabilitas yang dibangun di atas penindasan tidak pernah bertahan lama.</p>
+        </div>
+
+      </div>
+    </article>
+    <aside class="article-sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">Artikel Terkait</div>
+        <div class="widget-body">
+          <div class="related-item" onclick="showArticle('ideologi')"><div class="related-num">01</div><div class="related-title">Ideologi Negara</div></div>
+          <div class="related-item" onclick="showArticle('nuklir')"><div class="related-num">05</div><div class="related-title">Ambisi Nuklir Iran</div></div>
+          <div class="related-item" onclick="showArticle('politik')"><div class="related-num">03</div><div class="related-title">Politik Luar Negeri</div></div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header">Kronologi</div>
+        <div class="widget-body key-facts">
+          <div class="fact-item"><span class="fact-icon">🛢️</span><span class="fact-text"><strong>1908</strong> — Minyak ditemukan di Masjed Soleyman</span></div>
+          <div class="fact-item"><span class="fact-icon">🏭</span><span class="fact-text"><strong>1908</strong> — Anglo-Persian Oil Company (APOC) berdiri</span></div>
+          <div class="fact-item"><span class="fact-icon">🗳️</span><span class="fact-text"><strong>1951</strong> — Mossadegh nasionalisasi minyak Iran</span></div>
+          <div class="fact-item"><span class="fact-icon">🕵️</span><span class="fact-text"><strong>1953</strong> — Operasi Ajax: CIA gulingkan Mossadegh</span></div>
+          <div class="fact-item"><span class="fact-icon">🕌</span><span class="fact-text"><strong>1979</strong> — Revolusi Islam, hubungan Iran-Israel putus</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ==================== ARTICLE: NUKLIR ==================== -->
+<div id="page-article-nuklir" class="page">
+  <div class="breadcrumb">
+    <span onclick="showPage('home')">Beranda</span>
+    <span class="sep">›</span>
+    <span onclick="showPage('home')">Keamanan Global</span>
+    <span class="sep">›</span>
+    <span style="color:var(--dark);">Ambisi Nuklir Iran</span>
+  </div>
+  <div class="article-page">
+    <article class="article-main">
+      <a class="article-back" onclick="showPage('home')">← Kembali</a>
+      <div class="article-category-label">Keamanan Global</div>
+      <h1 class="article-headline">Ambisi Nuklir Iran: Dari Bantuan Amerika hingga Ketegangan Global</h1>
+      <div class="article-standfirst">Sebuah ironi besar: program nuklir yang kini menjadi sumber ketegangan terbesar di dunia dimulai bukan sebagai ancaman, melainkan sebagai hadiah dari Amerika Serikat. Perjalanan panjang dari "Atoms for Peace" hingga ambang kehancuran diplomatik.</div>
+      <div class="article-byline">
+        <span class="byline-author">Tim Redaksi TSE News</span>
+        <span>Senin, 13 April 2026</span>
+        <span>Waktu baca: 12 menit</span>
+      </div>
+      <div class="article-hero-img thumb-5"><span style="font-size:80px;opacity:0.5;">⚛️</span></div>
+      <div class="article-body">
+
+        <div class="article-section-header"><span class="section-flag">I</span>Asal Mula: Atoms for Peace</div>
+        <p class="article-para">Program nuklir Iran bermula dari sebuah ironi besar. Program ini dimulai pada tahun 1950-an di bawah pemerintahan Shah Mohammad Reza Pahlavi dengan bantuan langsung dari Amerika Serikat melalui program <strong>"Atoms for Peace"</strong>. Pada tahun 1967, Amerika Serikat bahkan membangun Pusat Riset Nuklir Teheran yang dilengkapi dengan reaktor riset berbahan bakar uranium kadar tinggi.</p>
+        <p class="article-para">Di bawah perlindungan Barat, Iran menandatangani Traktat Non-Proliferasi Nuklir (NPT) pada tahun 1968, yang memperkuat posisinya sebagai negara yang berhak mengembangkan teknologi nuklir untuk tujuan damai dan energi sipil.</p>
+
+        <div class="article-section-header"><span class="section-flag">II</span>Revolusi 1979 dan Kebangkitan Kembali Program Nuklir</div>
+        <p class="article-para">Arah angin berubah total setelah Revolusi Islam 1979. Pemerintahan baru di bawah Ayatollah Khomeini sempat menghentikan program nuklir karena dianggap sebagai "warisan Barat" dan tidak sesuai secara moral, ditambah dengan krisis ekonomi akibat Perang Iran-Irak yang panjang.</p>
+        <p class="article-para">Program ini baru dihidupkan kembali pada akhir 1980-an dengan bantuan rahasia dari jaringan internasional, termasuk Pakistan dan China, serta bantuan teknis dari Rusia. Keadaan menjadi sangat tegang pada tahun 2002 ketika sebuah kelompok oposisi mengungkapkan adanya fasilitas nuklir rahasia di Natanz dan Arak yang tidak dilaporkan kepada IAEA — memicu kekhawatiran global bahwa Iran secara diam-diam tengah membangun kemampuan untuk memproduksi senjata nuklir.</p>
+
+        <div class="article-section-header"><span class="section-flag">III</span>JCPOA: Harapan dan Kehancurannya</div>
+        <p class="article-para">Menanggapi krisis tersebut, serangkaian sanksi internasional dari PBB, AS, dan Uni Eropa mulai mencekik ekonomi Iran sejak tahun 2006. Ketegangan ini mencapai titik diplomasi tertinggi pada tahun 2015 melalui kesepakatan <em>JCPOA</em>. Dalam perjanjian ini, Iran setuju untuk membatasi pengayaan uraniumnya secara drastis, mengurangi stok nuklir, dan mengizinkan inspeksi ketat dari IAEA sebagai imbalan atas pencabutan sanksi ekonomi.</p>
+        <p class="article-para">Kesepakatan ini sempat membawa stabilitas relatif, hingga pada tahun 2018, Presiden AS Donald Trump secara sepihak menarik diri dari perjanjian tersebut dan menerapkan kembali kebijakan "tekanan maksimum". Iran merespons dengan perlahan-lahan melanggar batasan pengayaan uranium yang ditetapkan dalam JCPOA, yang membawa program mereka kembali ke ambang kemampuan senjata.</p>
+        <p class="article-para">Kondisi saat ini mencerminkan kegagalan upaya diplomasi untuk menghidupkan kembali JCPOA secara penuh. Di tengah kebuntuan negosiasi, bayang-bayang konflik bersenjata terus menghantui kawasan tersebut. Fasilitas nuklir Iran telah menjadi target potensial bagi serangan preventif, sementara Iran menggunakan kemajuan nuklirnya sebagai daya tawar politik.</p>
+        <div class="opinion-box">
+          <p>Program nuklir Iran adalah produk dari kebijakan luar negeri Barat yang kontradiktif. Amerika yang memberikan teknologi nuklir kepada Shah kini menjadi pihak yang paling keras menentang kelanjutannya — sebuah ironi yang tidak hilang dari ingatan kolektif Iran. Ketika JCPOA ditandatangani pada 2015, ia merupakan bukti bahwa diplomasi multipartai yang sabar dan beritikad baik dapat menghasilkan terobosan nyata.</p>
+          <p>Namun penarikan Trump pada 2018 tidak hanya menghancurkan satu perjanjian — ia menghancurkan kepercayaan Iran, dan mungkin kemampuan dunia untuk mencegah proliferasi nuklir melalui jalur diplomasi di masa depan. Pertanyaan bukan lagi apakah Iran akan terus mengembangkan program nuklirnya, melainkan apakah ada mekanisme internasional yang cukup kuat untuk mencegah dunia berjalan menuju perang yang tidak diinginkan siapapun.</p>
+        </div>
+
+      </div>
+    </article>
+    <aside class="article-sidebar">
+      <div class="sidebar-widget">
+        <div class="widget-header">Artikel Terkait</div>
+        <div class="widget-body">
+          <div class="related-item" onclick="showArticle('minyak')"><div class="related-num">04</div><div class="related-title">Pusaran Minyak dan Geopolitik</div></div>
+          <div class="related-item" onclick="showArticle('politik')"><div class="related-num">03</div><div class="related-title">Politik Luar Negeri</div></div>
+          <div class="related-item" onclick="showArticle('ideologi')"><div class="related-num">01</div><div class="related-title">Ideologi Negara</div></div>
+        </div>
+      </div>
+      <div class="sidebar-widget">
+        <div class="widget-header">Kronologi Nuklir Iran</div>
+        <div class="widget-body key-facts">
+          <div class="fact-item"><span class="fact-icon">⚛️</span><span class="fact-text"><strong>1957</strong> — Atoms for Peace: AS bantu Iran</span></div>
+          <div class="fact-item"><span class="fact-icon">🔬</span><span class="fact-text"><strong>1967</strong> — Pusat Riset Nuklir Teheran dibangun AS</span></div>
+          <div class="fact-item"><span class="fact-icon">📜</span><span class="fact-text"><strong>1968</strong> — Iran tanda tangani NPT</span></div>
+          <div class="fact-item"><span class="fact-icon">🕌</span><span class="fact-text"><strong>1979</strong> — Program nuklir dihentikan sementara</span></div>
+          <div class="fact-item"><span class="fact-icon">🚨</span><span class="fact-text"><strong>2002</strong> — Fasilitas Natanz & Arak terungkap</span></div>
+          <div class="fact-item"><span class="fact-icon">🤝</span><span class="fact-text"><strong>2015</strong> — JCPOA ditandatangani</span></div>
+          <div class="fact-item"><span class="fact-icon">❌</span><span class="fact-text"><strong>2018</strong> — Trump tarik AS dari JCPOA</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div id="page-about" class="page">
+  <div class="about-page">
+    <div class="about-hero">
+      <div class="about-logo-big"><span>TSE</span> News</div>
+      <div class="about-tagline">Analisis Mendalam &bull; Perspektif Global &bull; Sejak 2024</div>
+      <p class="about-mission">"Kami percaya bahwa pemahaman yang mendalam tentang dunia adalah hak setiap warga negara — bukan hak istimewa kalangan tertentu."</p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Tentang TSE News</h2>
+      <p class="about-p">TSE News adalah platform berita dan analisis independen yang didedikasikan untuk menyajikan laporan mendalam tentang isu-isu geopolitik, ideologi, dan hubungan internasional yang membentuk dunia kita. Kami percaya bahwa jurnalisme yang baik bukan sekadar menyampaikan fakta — ia harus membantu pembaca memahami konteks, sebab-akibat, dan implikasi dari setiap peristiwa.</p>
+      <p class="about-p">Didirikan dengan semangat untuk mengisi kekosongan dalam wacana publik Indonesia tentang isu-isu global yang kompleks, TSE News hadir sebagai referensi terpercaya bagi pembaca yang ingin memahami dinamika kekuasaan, konflik, dan diplomasi internasional secara lebih komprehensif.</p>
+      <p class="about-p">Nama TSE mencerminkan komitmen kami terhadap tiga pilar jurnalisme berkualitas: <strong>Transparansi</strong> dalam proses redaksional, <strong>Substansi</strong> dalam setiap laporan, dan <strong>Ekuitas</strong> dalam menyajikan berbagai perspektif.</p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Nilai-Nilai Kami</h2>
+      <p class="about-p">Di TSE News, kami berkomitmen pada standar jurnalisme tertinggi. Setiap artikel yang kami terbitkan telah melalui proses verifikasi faktual yang ketat, penelitian mendalam dari berbagai sumber primer, dan kajian perspektif yang beragam. Kami tidak berpihak pada satu ideologi politik, agama, atau kepentingan nasional tertentu.</p>
+      <p class="about-p">Kami juga membedakan antara laporan faktual dan opini redaksi — setiap pendapat yang kami sampaikan ditandai secara jelas sebagai "Opini Redaksi", sehingga pembaca dapat membedakan antara fakta yang kami laporkan dan interpretasi yang kami tawarkan. Ini adalah bentuk tanggung jawab kami kepada pembaca.</p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Tim Redaksi</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">KT</div>
+          <div class="team-name">Kensley Timothy</div>
+          <div class="team-role">Pemimpin Redaksi</div>
+          <div class="team-bio">Spesialis geopolitik Timur Tengah dengan keahlian dalam analisis kebijakan luar negeri dan hubungan internasional.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#1a3a5c;">AR</div>
+          <div class="team-name">Tim Analisis</div>
+          <div class="team-role">Divisi Riset</div>
+          <div class="team-bio">Tim peneliti multidisiplin yang mengkaji isu ideologi, sistem pemerintahan, dan dinamika konflik global.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#8B0000;">ED</div>
+          <div class="team-name">Tim Editorial</div>
+          <div class="team-role">Penyunting Senior</div>
+          <div class="team-bio">Memastikan setiap laporan memenuhi standar akurasi, keberimbangan, dan kedalaman analisis yang menjadi ciri khas TSE News.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Metodologi Pelaporan</h2>
+      <p class="about-p">Setiap artikel TSE News dibangun di atas fondasi penelitian primer yang kuat, mengacu pada dokumen resmi, jurnal akademis, dan laporan dari lembaga-lembaga terpercaya seperti IAEA, PBB, dan berbagai think-tank internasional. Kami menghindari mengandalkan satu sumber tunggal dan selalu berupaya menghadirkan perspektif yang beragam.</p>
+      <p class="about-p">Dalam isu-isu yang sensitif secara politik seperti konflik Israel-Palestina, program nuklir Iran, atau kebijakan luar negeri Amerika Serikat, kami secara khusus berupaya untuk menyajikan fakta-fakta yang dapat diverifikasi, bukan propaganda dari pihak manapun. Opini redaksi yang kami sampaikan adalah buah dari analisis kritis yang bertumpu pada data, bukan sentimen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div id="page-contact" class="page">
+  <div class="contact-page">
+    <div style="margin-bottom:48px;">
+      <h1 class="contact-h1">Hubungi Kami</h1>
+      <p class="contact-sub">Kami terbuka untuk pertanyaan, saran, kolaborasi, dan kritik yang membangun.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="form-group">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-input" placeholder="Masukkan nama Anda" id="contact-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alamat Email</label>
+          <input type="email" class="form-input" placeholder="email@contoh.com" id="contact-email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subjek</label>
+          <select class="form-input form-select" id="contact-subject">
+            <option value="">Pilih kategori...</option>
+            <option>Pertanyaan Editorial</option>
+            <option>Berlangganan Newsletter</option>
+            <option>Kolaborasi & Partnership</option>
+            <option>Koreksi Artikel</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pesan</label>
+          <textarea class="form-textarea" placeholder="Tulis pesan Anda di sini..." id="contact-message"></textarea>
+        </div>
+        <button class="btn-send" onclick="submitForm()">Kirim Pesan</button>
+        <div class="form-success" id="form-success">✓ Pesan Anda telah terkirim. Tim kami akan merespons dalam 1–2 hari kerja.</div>
+      </div>
+      <div class="contact-info">
+        <div class="contact-info-block">
+          <div class="contact-info-h">Informasi Kontak</div>
+          <div class="contact-info-item"><span class="contact-icon">📧</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f4d5a5b5e544c567f4b4c5a515a484c11565b">[email&#160;protected]</a></span></div>
+          <div class="contact-info-item"><span class="contact-icon">📞</span><span>+62 21 1234 5678</span></div>
+          <div class="contact-info-item"><span class="contact-icon">📍</span><span>Jakarta Selatan, DKI Jakarta, Indonesia</span></div>
+          <div class="contact-info-item"><span class="contact-icon">🕐</span><span>Senin – Jumat, 09.00 – 17.00 WIB</span></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-info-h">Ikuti Kami</div>
+          <div class="contact-info-item"><span class="contact-icon">📱</span><span>@TSENews di semua platform media sosial</span></div>
+          <div class="contact-info-item"><span class="contact-icon">📰</span><span>Newsletter harian tersedia via email</span></div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-info-h">Untuk Media & Pers</div>
+          <p style="font-family:var(--font-ui);font-size:14px;color:var(--gray-700);line-height:1.65;">Untuk permintaan wawancara, kutipan, atau akreditasi media, hubungi langsung melalui email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a7a786f79794a7e796f646f7d7924636e">[email&#160;protected]</a></strong> dengan mencantumkan nama media dan tenggat waktu Anda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== KERJA SAMA PAGE ==================== -->
+<div id="page-kerjasama" class="page">
+  <div class="about-page">
+    <div class="about-hero" style="margin-bottom:48px;padding-bottom:40px;">
+      <div class="about-logo-big" style="font-size:48px;">Kerja Sama</div>
+      <div class="about-tagline">Bersama Membangun Jurnalisme Berkualitas</div>
+      <p class="about-mission">"Kami terbuka untuk kolaborasi yang bermakna dengan individu, institusi, dan organisasi yang berbagi visi yang sama tentang pentingnya informasi yang mendalam dan akurat."</p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Peluang Kerja Sama</h2>
+      <p class="about-p">TSE News membuka peluang kerja sama yang luas dengan berbagai pihak — mulai dari lembaga pendidikan, think-tank kebijakan, organisasi media, hingga perusahaan yang ingin mendukung ekosistem jurnalisme berkualitas di Indonesia.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px;">
+      <div class="sidebar-widget" style="border:1px solid var(--gray-300);background:white;">
+        <div class="widget-header">Kolaborasi Konten</div>
+        <div class="widget-body">
+          <p style="font-family:var(--font-ui);font-size:14px;color:var(--gray-700);line-height:1.7;">Kami terbuka untuk kolaborasi penulisan artikel bersama, terjemahan laporan internasional, atau co-publishing dengan institusi akademis dan lembaga riset.</p>
+        </div>
+      </div>
+      <div class="sidebar-widget" style="border:1px solid var(--gray-300);background:white;">
+        <div class="widget-header">Sponsor Editorial</div>
+        <div class="widget-body">
+          <p style="font-family:var(--font-ui);font-size:14px;color:var(--gray-700);line-height:1.7;">Dukung laporan mendalam kami melalui program sponsor editorial yang transparan — nama institusi Anda akan dicantumkan sebagai pendukung laporan tanpa memengaruhi independensi redaksi.</p>
+        </div>
+      </div>
+      <div class="sidebar-widget" style="border:1px solid var(--gray-300);background:white;">
+        <div class="widget-header">Kemitraan Media</div>
+        <div class="widget-body">
+          <p style="font-family:var(--font-ui);font-size:14px;color:var(--gray-700);line-height:1.7;">Kami membuka kemitraan sindikasi konten dengan media nasional dan internasional yang ingin memperluas cakupan analisis geopolitik dan hubungan internasional kepada audiens mereka.</p>
+        </div>
+      </div>
+      <div class="sidebar-widget" style="border:1px solid var(--gray-300);background:white;">
+        <div class="widget-header">Program Akademis</div>
+        <div class="widget-body">
+          <p style="font-family:var(--font-ui);font-size:14px;color:var(--gray-700);line-height:1.7;">TSE News membuka pintu bagi mahasiswa dan akademisi untuk berkontribusi sebagai penulis tamu atau peneliti yang ingin mempublikasikan karya analisis mereka kepada publik yang lebih luas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Hubungi Tim Kerja Sama</h2>
+      <p class="about-p">Untuk mendiskusikan peluang kerja sama, kirimkan proposal singkat Anda ke <strong>partnership@tsenews.id</strong> dengan subjek "Proposal Kerja Sama — [Nama Institusi]". Tim kami akan merespons dalam 3 hari kerja.</p>
+      <div style="margin-top:24px;">
+        <a class="btn-subscribe" onclick="showPage('contact')" style="display:inline-block;text-decoration:none;">Hubungi Kami →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BERLANGGANAN PAGE ==================== -->
+<div id="page-berlangganan" class="page">
+  <div class="about-page" style="max-width:700px;">
+    <div class="about-hero" style="margin-bottom:48px;padding-bottom:40px;">
+      <div class="about-logo-big" style="font-size:48px;">Berlangganan</div>
+      <div class="about-tagline">Analisis Mendalam Langsung ke Inbox Anda</div>
+      <p class="about-mission">"Jadilah yang pertama membaca laporan eksklusif dan analisis mendalam dari tim redaksi TSE News setiap minggunya."</p>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Apa yang Anda Dapatkan</h2>
+      <div class="widget-body key-facts" style="background:white;border:1px solid var(--gray-300);padding:20px;margin-bottom:32px;">
+        <div class="fact-item"><span class="fact-icon">📰</span><span class="fact-text"><strong>Newsletter Mingguan</strong> — Rangkuman analisis dan artikel terbaru setiap Senin pagi</span></div>
+        <div class="fact-item"><span class="fact-icon">🔍</span><span class="fact-text"><strong>Laporan Eksklusif</strong> — Akses ke artikel mendalam yang hanya tersedia untuk pelanggan</span></div>
+        <div class="fact-item"><span class="fact-icon">📊</span><span class="fact-text"><strong>Briefing Geopolitik</strong> — Ringkasan perkembangan isu global setiap bulan</span></div>
+        <div class="fact-item"><span class="fact-icon">🔔</span><span class="fact-text"><strong>Notifikasi Artikel Baru</strong> — Pemberitahuan langsung saat artikel baru diterbitkan</span></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h2 class="about-h2">Daftar Sekarang — Gratis</h2>
+      <p class="about-p" style="margin-bottom:24px;">Berlangganan newsletter TSE News sepenuhnya gratis. Masukkan email Anda di bawah dan mulai terima analisis mendalam langsung ke inbox Anda.</p>
+      <div class="form-group">
+        <label class="form-label">Nama Lengkap</label>
+        <input type="text" class="form-input" placeholder="Masukkan nama Anda" id="sub-name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Alamat Email</label>
+        <input type="email" class="form-input" placeholder="email@contoh.com" id="sub-email">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Minat Topik</label>
+        <select class="form-input form-select" id="sub-topic">
+          <option value="">Pilih topik utama...</option>
+          <option>Geopolitik & Hubungan Internasional</option>
+          <option>Ideologi & Sistem Pemerintahan</option>
+          <option>Timur Tengah & Konflik Global</option>
+          <option>Keamanan & Pertahanan</option>
+          <option>Semua Topik</option>
+        </select>
+      </div>
+      <button class="btn-send" onclick="submitSubscribe()" style="margin-top:8px;">Daftar Berlangganan →</button>
+      <div class="form-success" id="sub-success" style="margin-top:16px;">✓ Berhasil! Anda kini terdaftar sebagai pelanggan TSE News. Cek inbox Anda untuk email konfirmasi.</div>
+      <p style="font-family:var(--font-ui);font-size:12px;color:var(--gray-500);margin-top:16px;line-height:1.6;">Dengan mendaftar, Anda menyetujui kebijakan privasi TSE News. Anda dapat berhenti berlangganan kapan saja.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name"><span>TSE</span> News</div>
+        <p class="footer-brand-desc">Platform berita dan analisis independen yang menyajikan laporan mendalam tentang geopolitik, ideologi, dan hubungan internasional. Kami percaya pemahaman dunia adalah hak semua orang.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Artikel</div>
+        <ul class="footer-links">
+          <li><a onclick="showArticle('ideologi')">Ideologi Negara</a></li>
+          <li><a onclick="showArticle('sistem')">Sistem Pemerintahan</a></li>
+          <li><a onclick="showArticle('politik')">Politik Luar Negeri</a></li>
+          <li><a onclick="showArticle('minyak')">Geopolitik Minyak</a></li>
+          <li><a onclick="showArticle('nuklir')">Ambisi Nuklir Iran</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigasi</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Beranda</a></li>
+          <li><a onclick="showPage('about')">Tentang Kami</a></li>
+          <li><a onclick="showPage('kerjasama')">Kerja Sama</a></li>
+          <li><a onclick="showPage('berlangganan')">Berlangganan</a></li>
+          <li><a onclick="showPage('contact')">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Topik</div>
+        <ul class="footer-links">
+          <li><a>Geopolitik</a></li>
+          <li><a>Timur Tengah</a></li>
+          <li><a>Keamanan Global</a></li>
+          <li><a>Ideologi & Politik</a></li>
+          <li><a>Hubungan Internasional</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TSE News. Seluruh hak cipta dilindungi.</span>
+      <div class="footer-legal">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat Penggunaan</a>
+        <a href="#">Kebijakan Editorial</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+// 1. FUNGSI NAVIGASI (UTAMA)
+function showPage(pageId) {
+  // Sembunyikan semua section yang punya class 'page'
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none'; 
+  });
+  
+  // Tampilkan halaman yang dipilih
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    target.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// 2. FUNGSI UNTUK BUKA ARTIKEL
+function showArticle(slug) {
+  showPage('article-' + slug);
+}
+
+// 3. FUNGSI MENU AKTIF
+function setActive(el) {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// 4. FUNGSI LANGGANAN
+function submitSubscribe() {
+  const nameEl = document.getElementById('sub-name');
+  const emailEl = document.getElementById('sub-email');
+  
+  if (!nameEl || !emailEl) return;
+  
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  
+  if (!name || !email) {
+    alert('Harap isi nama dan email Anda.');
+    return;
+  }
+  
+  const successBox = document.getElementById('sub-success');
+  if (successBox) {
+    successBox.style.display = 'block';
+    nameEl.value = '';
+    emailEl.value = '';
+    setTimeout(() => { successBox.style.display = 'none'; }, 6000);
+  }
+}
+
+// 5. FUNGSI KONTAK (YANG TADI ERROR)
+function submitForm() {
+  const nameEl = document.getElementById('contact-name');
+  const emailEl = document.getElementById('contact-email');
+  const messageEl = document.getElementById('contact-message');
+
+  if (!nameEl || !emailEl || !messageEl) return;
+
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  const message = messageEl.value.trim();
+  
+  if (!name || !email || !message) {
+    alert('Harap lengkapi semua bidang.');
+    return;
+  }
+  
+  const successBox = document.getElementById('form-success');
+  if (successBox) {
+    successBox.style.display = 'block';
+    nameEl.value = '';
+    emailEl.value = '';
+    messageEl.value = '';
+    setTimeout(() => { successBox.style.display = 'none'; }, 5000);
+  }
+}</script><script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function showArticle(slug) {
+  showPage('article-' + slug);
+}
+
+function setActive(el) {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function submitSubscribe() {
+  const name = document.getElementById('sub-name').value.trim();
+  const email = document.getElementById('sub-email').value.trim();
+  if (!name || !email) {
+    alert('Harap isi nama dan email Anda.');
+    return;
+  }
+  document.getElementById('sub-success').style.display = 'block';
+  document.getElementById('sub-name').value = '';
+  document.getElementById('sub-email').value = '';
+  setTimeout(() => { document.getElementById('sub-success').style.display = 'none'; }, 6000);
+}
+function submitForm() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  
+  if (!name || !email || !message) {
+    alert('Harap isi semua bidang pesan.');
+    return;
+  }
+  
+  document.getElementById('form-success').style.display = 'block';
+  // Reset form setelah kirim
+  document.getElementById('contact-name').value = '';
+  document.getElementById('contact-email').value = '';
+  document.getElementById('contact-message').value = '';
+  
+  setTimeout(() => { 
+    document.getElementById('form-success').style.display = 'none'; 
+  }, 5000);
+}
+  if (!name || !email || !message) {
+    alert('Harap lengkapi semua kolom wajib (nama, email, dan pesan).');
+    return;
+  }
+  document.get
